@@ -69,7 +69,7 @@ module.exports.Component = registerComponent('cursor', {
     if (distance >= this.data.maxDistance) { return; }
     this.intersectedEl = el;
     el.addState('hovered');
-    el.emit('mouseenter');
+    this.emit('mouseenter');
     this.el.addState('hovering');
     if (data.timeout === 0) { return; }
     if (!data.fuse) { return; }
@@ -85,7 +85,7 @@ module.exports.Component = registerComponent('cursor', {
     var el = evt.detail.el;
     if (!el || !this.intersectedEl) { return; }
     el.removeState('hovered');
-    el.emit('mouseleave');
+    this.emit('mouseleave');
     this.el.removeState('hovering');
     this.el.removeState('fusing');
     this.intersectedEl = null;
